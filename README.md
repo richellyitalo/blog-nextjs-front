@@ -1,4 +1,5 @@
 ## Roadmap
+```
 [ ] Authentication - Private routes
   [ ] Posts - list
   [ ] Posts - add
@@ -18,5 +19,4 @@
   [ ] Detail a single post
   [ ] About page
   [ ] Contact page (with send's action)
-
-
+```
