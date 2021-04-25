@@ -20,8 +20,8 @@ export default function Slider () {
   return (
     <div className="container mx-auto text-center">
       <SliderLib {...settings}>
-        <div >
-          <Img src="https://cdn.pixabay.com/photo/2020/12/10/09/22/beach-front-5819728_960_720.jpg" />
+        <div>
+          <Img src="https://cdn.pixabay.com/photo/2020/10/09/13/12/man-5640540_960_720.jpg" />
         </div>
         <div>
           <Img src="https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_960_720.jpg" />
