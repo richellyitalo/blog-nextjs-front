@@ -5,11 +5,11 @@ import { getPosts } from '@/services/api';
 import axios from 'axios';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ posts }) {
+export default function Home({ posts, pagination }) {
   return (
     <>
       <Content>
-        <ListPosts items={posts.results} />
+        <ListPosts items={posts.results} pagination={pagination} />
       </Content>
       <Sidebar>
         <ul class="list-decimal">
