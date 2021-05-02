@@ -1,38 +1,57 @@
+import Link from 'next/link';
+import { IoMdArrowForward } from 'react-icons/io';
+import styles from '../styles/Home.module.css';
+
+import Banners from '@/components/banners/banners';
 import Content from '@/components/commons/content/content';
 import Sidebar from '@/components/commons/sidebar/sidebar';
 import ListPosts from '@/components/list-posts/list-posts';
 import { getPosts } from '@/services/api';
-import axios from 'axios';
-import styles from '../styles/Home.module.css';
 
-export default function Home({ posts, pagination }) {
+const ButtonLinkMore = () => (
+  <div className="text-right">
+    <Link
+      href={{
+        pathname: '/blog/[page]',
+        query: { page: 2 },
+      }}
+    >
+      <a className="text-gray-600 text-xs hover:text-gray-800 border p-2 border-gray-100 rounded border-solid">
+        Ver mais publicações
+        <IoMdArrowForward className="inline ml-1" />
+      </a>
+    </Link>
+  </div>
+);
+
+export default function Home({ postsData }) {
+  const posts = postsData.results;
+  const nextLinkPosts = postsData.next;
+
   return (
     <>
       <Content>
-        <ListPosts items={posts.results} pagination={pagination} />
+        <div>
+          <ListPosts items={posts} />
+
+          {nextLinkPosts && <ButtonLinkMore link={nextLinkPosts} />}
+        </div>
       </Content>
+
       <Sidebar>
-        <ul class="list-decimal">
-          <li>banner 1</li>
-          <li>banner 2</li>
-        </ul>
+        <Banners />
       </Sidebar>
     </>
   );
 }
 
-export async function getStaticProps() {
-  const data = await getPosts().then((res) => res.data);
+export async function getServerSideProps({ query }) {
+  const data = await getPosts();
 
   return {
     props: {
-      posts: data,
-      pagination: {
-        next: data.next,
-        prev: data.previous,
-        total: data.count,
-      },
+      postsData: data,
     },
-    revalidate: 120,
+    // revalidate: 120,
   };
 }
