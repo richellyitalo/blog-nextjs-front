@@ -42,11 +42,11 @@ export default function ListPosts (props) {
             pageCount={totalPages}
             onPageChange={handlePagination}
             disabledClassName="bg-blue-200 !text-white cursor-default hover:bg-blue-200"
-            activeLinkClassName="bg-blue-200 !text-white cursor-default hover:bg-blue-200"
+            activeLinkClassName="bg-blue-200 !text-white cursor-default hover:bg-blue-200 !cursor-default"
             containerClassName="relative z-0 inline-flex rounded-md -space-x-px"
-            pageLinkClassName="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
-            previousLinkClassName="relative inline-flex items-center px-2 py-2 rounded-l-sm border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-            nextLinkClassName="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+            pageLinkClassName="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer"
+            previousLinkClassName="relative inline-flex items-center px-2 py-2 rounded-l-sm border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer"
+            nextLinkClassName="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer"
           />
         </div>
       }
