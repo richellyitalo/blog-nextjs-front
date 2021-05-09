@@ -31,7 +31,6 @@ export default function Blog({ postsData, paginationData }) {
 export async function getStaticPaths() {
   const posts = await getPosts();
   const totalPages = Math.ceil(posts.count / POSTS_PER_PAGE);
-  console.log('vai paths');
 
   const paths = [...Array(totalPages).keys()].map((pageIndex) => ({
     params: { page: (pageIndex + 1).toString() },
@@ -47,7 +46,6 @@ export async function getStaticProps(context) {
   const { params } = context;
   const page = params.page;
   const posts = await getPosts(page);
-  console.log('vai props');
 
   if (!posts) {
     return {
@@ -64,7 +62,7 @@ export async function getStaticProps(context) {
         perPage: POSTS_PER_PAGE,
       },
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 }
 

@@ -2,28 +2,24 @@ import Link from 'next/link';
 import { IoMdArrowForward } from 'react-icons/io';
 
 import Banners from '@/components/banners/banners';
-import Content from '@/components/commons/content/content';
 import Sidebar from '@/components/commons/sidebar/sidebar';
 import ListPosts from '@/components/list-posts/list-posts';
 import { getBanners, getPosts } from '@/services/api';
+import ContentFull from '@/components/commons/content-full/content-full';
 
-export default function Home({ postsData, banners }) {
+export default function Blog({ postsData, banners }) {
   const posts = postsData.results;
   const nextLinkPosts = postsData.next;
 
   return (
     <>
-      <Content>
+      <ContentFull>
         <div>
           <ListPosts items={posts} />
 
           {nextLinkPosts && <ButtonLinkMore link={nextLinkPosts} />}
         </div>
-      </Content>
-
-      <Sidebar>
-        <Banners items={banners} />
-      </Sidebar>
+      </ContentFull>
     </>
   );
 }
@@ -55,14 +51,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-// export async function getServerSideProps({ query }) {
-//   const data = await getPosts();
-
-//   return {
-//     props: {
-//       postsData: data,
-//     },
-//     // revalidate: 120,
-//   };
-// }

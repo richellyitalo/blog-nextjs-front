@@ -7,7 +7,7 @@ export default function SiteLayout (props) {
     <div {...props}>
       <Header />
       
-      <main className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
+      <main className="container px-5 py-8 mx-auto flex sm:flex-nowrap flex-wrap">
         {children}
       </main>
     </div>

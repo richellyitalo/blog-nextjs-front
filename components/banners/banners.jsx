@@ -1,10 +1,11 @@
-function Banners() {
+import BannerItem from "./banner-item"
+
+function Banners ({ items }) {
   return (
     <div>
       <ul className="list-decimal">
-          <li>banner 1</li>
-          <li>banner 2</li>
-        </ul>
+        {items.map(item => <BannerItem item={item} key={item.id} />)}
+      </ul>
     </div>
   )
 }

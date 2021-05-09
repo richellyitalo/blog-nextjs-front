@@ -1,3 +1,4 @@
+import { convertToDateReadableForHuman } from '@/util/helpers';
 import Link from 'next/link'
 
 export default function PostItem ({ item }) {
@@ -8,9 +9,7 @@ export default function PostItem ({ item }) {
     created_at
   } = item;
 
-  const optionsDate = {day: 'numeric', month: 'long', year: 'numeric'};
-  const dateFormat = new Date(created_at)
-  const dateReadableForHuman = dateFormat.toLocaleDateString('pt-BR', optionsDate);
+  const dateReadableForHuman = convertToDateReadableForHuman(created_at);
 
   return (
     <div className="py-8 flex flex-wrap md:flex-nowrap">
@@ -20,7 +19,7 @@ export default function PostItem ({ item }) {
       </div>
       <div className="md:flex-grow">
         <h2 className="text-3xl font-medium text-gray-900 title-font mb-2">
-          <Link href={`/${slug}`}><a className="hover:text-blue-700">{title}</a></Link>
+          <Link href={`/blog/${encodeURIComponent(slug)}`}><a className="hover:text-blue-700">{title}</a></Link>
         </h2>
         <p className="leading-relaxed text-gray-500 hover:text-gray-800 text-justify">
           {excerpt}
